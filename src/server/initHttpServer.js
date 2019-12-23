@@ -5,11 +5,11 @@
  * @param serverBundlePath Path to the server bundle file where the express server was started by calling .listen().
  * @returns {{httpServer: *, sockets: Map}} when server bundle has no errors. Returns null when server bundle contains errors.
  */
-const initHttpServer = serverBundlePath => {
+const initHttpServer = async serverBundlePath => {
   let httpServer;
 
   try {
-    httpServer = require(serverBundlePath).default; //eslint-disable-line
+    httpServer = await require(serverBundlePath).default; //eslint-disable-line
   } catch (e) {
     console.log(e);
     return null;
