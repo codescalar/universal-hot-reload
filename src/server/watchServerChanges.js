@@ -41,7 +41,7 @@ const watchServerChanges = serverConfig => {
   };
 
   // compile server side code
-  serverCompiler.watch(compilerOptions, err => {
+  serverCompiler.watch(compilerOptions, async err => {
     if (err) {
       console.log(`Server bundling error: ${JSON.stringify(err)}`);
       return;
@@ -50,8 +50,8 @@ const watchServerChanges = serverConfig => {
     clearRequireCache(bundlePath);
 
     if (!initialLoad) {
-      httpServerInitObject.httpServer.close(() => {
-        httpServerInitObject = initHttpServer(bundlePath);
+      httpServerInitObject.httpServer.close(async () => {
+        httpServerInitObject = await initHttpServer(bundlePath);
 
         if (httpServerInitObject) {
           initialLoad = false;
@@ -68,7 +68,7 @@ const watchServerChanges = serverConfig => {
         socket.destroy();
       }
     } else {
-      httpServerInitObject = initHttpServer(bundlePath);
+      httpServerInitObject = await initHttpServer(bundlePath);
 
       if (httpServerInitObject) {
         initialLoad = false;
