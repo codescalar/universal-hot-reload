@@ -40,6 +40,12 @@ const watchClientChanges = clientConfig => {
     },
     hot: true,
     sockPort: port,
+    proxy: {
+      '/api': {
+        target: 'http://127.0.0.1:8888/api',
+        secure: false,
+      },
+    },
   };
 
   const server = new webpackDevServer(compiler, devServerOptions);
