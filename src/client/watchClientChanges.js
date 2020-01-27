@@ -45,6 +45,10 @@ const watchClientChanges = clientConfig => {
         target: 'http://127.0.0.1:8888/',
         secure: false,
       },
+      '/app': {
+        target: 'http://127.0.0.1:8888/',
+        secure: false,
+      },
     },
   };
 
