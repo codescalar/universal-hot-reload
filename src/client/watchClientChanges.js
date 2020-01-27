@@ -53,6 +53,18 @@ const watchClientChanges = clientConfig => {
         target: 'http://127.0.0.1:8888/',
         secure: false,
       },
+      '/password': {
+        target: 'http://127.0.0.1:8888/',
+        secure: false,
+      },
+      '/reset': {
+        target: 'http://127.0.0.1:8888/',
+        secure: false,
+      },
+      '/events': {
+        target: 'http://127.0.0.1:8888/',
+        secure: false,
+      },
     },
   };
 
