@@ -7,7 +7,6 @@ import webpackDevServer from 'webpack-dev-server';
  */
 const watchClientChanges = clientConfig => {
   const { publicPath } = clientConfig.output;
-  const { proxy } = clientConfig.devServer;
   const { protocol, host, port } = url.parse(publicPath);
   const webpackDevServerUrl = `${protocol}//${host}`;
 
@@ -41,7 +40,7 @@ const watchClientChanges = clientConfig => {
     },
     hot: true,
     sockPort: port,
-    proxy,
+    ...clientConfig.devServer,
   };
 
   const server = new webpackDevServer(compiler, devServerOptions);
